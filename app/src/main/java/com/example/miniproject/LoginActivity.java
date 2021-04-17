@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     private void resetPasswordFunction() {
 
         EditText editText = new EditText(getBaseContext());
-
+        editText.setHint("Email address here");
         AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(LoginActivity.this);
 
         passwordResetDialog.setTitle("Reset password");
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Please check your email", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(LoginActivity.this, "Some errors occurred" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Invalid email address" , Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

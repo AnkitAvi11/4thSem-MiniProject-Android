@@ -1,14 +1,18 @@
 package com.example.miniproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout usernameLayout, passwordLayout;
     private Button loginButton;
     private ProgressBar progressBar;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +46,56 @@ public class LoginActivity extends AppCompatActivity {
         passwordLayout = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         progressBar = findViewById(R.id.progressbar);
+        textView = findViewById(R.id.resetPassword);
 
         loginButton.setOnClickListener(v -> this.loginAction());
 
+        textView.setOnClickListener(v -> this.resetPasswordFunction());
+
     }
 
+
+    //  method to reset the password using the email address
+    private void resetPasswordFunction() {
+
+        EditText editText = new EditText(getBaseContext());
+
+        AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(LoginActivity.this);
+
+        passwordResetDialog.setTitle("Reset password");
+        passwordResetDialog.setMessage("Enter your email address");
+        passwordResetDialog.setView(editText);
+
+        passwordResetDialog.setPositiveButton("Send Email", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //  extract the email and send the email
+                String emailAddress = editText.getText().toString();
+                auth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Please check your email", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(LoginActivity.this, "Some errors occurred" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+        passwordResetDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //  closes the dialog box
+            }
+        });
+
+        passwordResetDialog.create().show();
+
+    }
+
+    //  method to log a user in the application
     private void loginAction() {
         String email = usernameLayout.getEditText().getText().toString();
         String password = passwordLayout.getEditText().getText().toString();

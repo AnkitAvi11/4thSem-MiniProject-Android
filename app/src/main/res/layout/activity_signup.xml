@@ -13,18 +13,18 @@
         tools:context=".SignupActivity">
 
         <TextView
+            android:id="@+id/registerHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/registerHeader"
+            android:layout_marginTop="20dp"
             android:text="Register"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/emailaddress"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/emailaddress"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@id/emailaddress"
-            app:layout_constraintVertical_chainStyle="packed"
-            />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

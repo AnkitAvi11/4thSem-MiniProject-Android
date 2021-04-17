@@ -77,6 +77,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/loginButton"
             app:layout_constraintBottom_toTopOf="@id/resetPassword"
+            android:padding="15dp"
             />
 
         <TextView
@@ -88,6 +89,7 @@
             app:layout_constraintStart_toStartOf="@id/loginButton"
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="15dp"
             />
 
         <ProgressBar

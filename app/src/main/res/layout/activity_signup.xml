@@ -76,7 +76,9 @@
             app:layout_constraintBottom_toTopOf="@id/myspinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userPassword" />
+            app:layout_constraintTop_toBottomOf="@id/userPassword"
+            android:padding="15dp"
+            />
 
         <ProgressBar
             android:id="@+id/myspinner"

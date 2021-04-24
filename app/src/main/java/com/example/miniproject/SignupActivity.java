@@ -72,7 +72,7 @@ public class SignupActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(SignupActivity.this, "Signup failed. Please check the fields again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, task.getException().getMessage().toString(), Toast.LENGTH_SHORT).show();
                 }
                 spinner.setVisibility(View.INVISIBLE);
             }

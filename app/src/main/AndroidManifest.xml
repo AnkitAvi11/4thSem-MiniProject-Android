@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            >
+        </activity>
         <activity android:name=".SignupActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
         <activity
